@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOG_DIR" value="logs" />
+    <property name="LOG_PATH" value="${LOG_DIR}/news-service.log"/>
+
+    <appender name="CONSOLE_APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ---> [%-20thread] %-40.40logger{40} : %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="FILE_APPENDER" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_PATH}</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ---> [%-20thread] %-40.40logger{40} : %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/news-service.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <totalSizeCap>10GB</totalSizeCap>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE_APPENDER" />
+        <appender-ref ref="FILE_APPENDER" />
+    </root>
+
+    <logger name="ru.clevertec.newsservice.controller" level="INFO">
+        <appender-ref ref="CONSOLE_APPENDER" />
+        <appender-ref ref="FILE_APPENDER" />
+    </logger>
+    <logger name="ru.clevertec.newsservice.service" level="INFO">
+        <appender-ref ref="CONSOLE_APPENDER" />
+        <appender-ref ref="FILE_APPENDER" />
+    </logger>
+    <logger name="ru.clevertec.newsservice.repository" level="DEBUG">
+        <appender-ref ref="CONSOLE_APPENDER" />
+        <appender-ref ref="FILE_APPENDER" />
+    </logger>
+</configuration>

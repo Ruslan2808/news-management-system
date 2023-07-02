@@ -1,0 +1,66 @@
+version: "3.9"
+
+services:
+  config-server:
+    container_name: config-server
+    image: config-server:latest
+    build:
+      context: ./config-server
+      dockerfile: Dockerfile
+    ports:
+      - "8888:8888"
+    networks:
+      - news-management-system
+
+  auth-service:
+    container_name: auth-service
+    image: auth-service:latest
+    build:
+      context: ./auth-service
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+    networks:
+      - news-management-system
+
+  news-service:
+    container_name: news-service
+    image: news-service:latest
+    build:
+      context: ./news-service
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - news-management-system
+
+  postgres:
+    container_name: postgres
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_MULTIPLE_DATABASES: auth_db, news_db
+    volumes:
+      - ./database/postgres_init.sql:/docker-entrypoint-initdb.d/postgres_init.sql
+    networks:
+      - news-management-system
+
+  redis:
+    container_name: redis
+    image: redis:6
+    ports:
+      - "6379:6379"
+    networks:
+      - news-management-system
+
+networks:
+  news-management-system:
+    driver: bridge

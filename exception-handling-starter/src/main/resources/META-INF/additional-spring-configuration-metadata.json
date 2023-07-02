@@ -1,0 +1,8 @@
+{
+  "properties": [{
+    "name": "exception.handling.enabled",
+    "type": "java.lang.Boolean",
+    "defaultValue": true,
+    "description": "To enable autoconfiguration exception handling set this property to true (by default). To disable this option set this property to false."
+  }]
+}

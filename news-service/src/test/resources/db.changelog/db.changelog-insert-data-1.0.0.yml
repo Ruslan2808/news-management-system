@@ -1,0 +1,298 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-data-1.0.0
+      author: Ruslan Kantsevitch
+
+      changes:
+        - insert:
+            tableName: news
+            columns:
+              - column:
+                  name: title
+                  value: 'Vision Pro: Apples new augmented reality headset unveiled'
+
+              - column:
+                  name: text
+                  value: 'Apple has unveiled a much-anticipated augmented reality headset, Apple Vision Pro, 
+                          in its first major hardware launch for almost a decade.'
+
+              - column:
+                  name: time
+                  value: '2023-06-05 11:45:32'
+
+              - column:
+                  name: username
+                  value: 'thomas_martinez'
+                  
+        - insert:
+            tableName: news
+            columns:
+              - column:
+                  name: title
+                  value: 'Climate change: How is my country doing on tackling it?'
+
+              - column:
+                  name: text
+                  value: 'Every year countries pledge to cut their greenhouse gas emissions in an effort to curb the 
+                          impacts of climate change.'
+
+              - column:
+                  name: time
+                  value: '2023-06-05 17:18:54'
+
+              - column:
+                  name: username
+                  value: 'sharon_hill'
+
+        - insert:
+            tableName: news
+            columns:
+              - column:
+                  name: title
+                  value: 'Multi-cancer blood test shows real promise in NHS study'
+
+              - column:
+                  name: text
+                  value: 'A blood test for more than 50 types of cancer has shown real promise in a major NHS trial, 
+                          researchers say.'
+
+              - column:
+                  name: time
+                  value: '2022-06-01 12:15:10'
+
+              - column:
+                  name: username
+                  value: 'laura_norton'
+
+        - insert:
+            tableName: news
+            columns:
+              - column:
+                  name: title
+                  value: 'Zlatan Ibrahimovic retires: Swedish great ends football career at 41'
+
+              - column:
+                  name: text
+                  value: 'AC Milan Zlatan Ibrahimovic has retired from football at the age of 41, bringing to an 
+                          end one of the modern era is most glittering careers.'
+
+              - column:
+                  name: time
+                  value: '2022-06-04 14:25:12'
+
+              - column:
+                  name: username
+                  value: 'thomas_martinez'
+
+        - insert:
+            tableName: news
+            columns:
+              - column:
+                  name: title
+                  value: 'Music streaming royalties to be discussed by government'
+
+              - column:
+                  name: text
+                  value: 'The music industry has committed to improving metadata for tracking songs on music streaming 
+                          platforms, following widespread criticism from artists.'
+
+              - column:
+                  name: time
+                  value: '2023-05-26 10:08:53'
+
+              - column:
+                  name: username
+                  value: 'laura_norton'
+
+        - insert:
+            tableName: comments
+            columns:
+              - column:
+                  name: text
+                  value: 'There are some things that we just dont need, and this is one of them.'
+
+              - column:
+                  name: time
+                  value: '2023-06-06 06:59:33'
+
+              - column:
+                  name: username
+                  value: 'debbie_garcia'
+
+              - column:
+                  name: news_id
+                  value: '1'
+
+        - insert:
+            tableName: comments
+            columns:
+              - column:
+                  name: text
+                  value: 'VR of any kind wont succeed until the tech is made far less intrusive.'
+
+              - column:
+                  name: time
+                  value: '2023-06-05 17:14:19'
+
+              - column:
+                  name: username
+                  value: 'ronnie_stevens'
+
+              - column:
+                  name: news_id
+                  value: '1'
+
+        - insert:
+            tableName: comments
+            columns:
+              - column:
+                  name: text
+                  value: 'Climate will change regardless of what we do to control it.'
+
+              - column:
+                  name: time
+                  value: '2023-06-05 20:16:03'
+
+              - column:
+                  name: username
+                  value: 'ronnie_stevens'
+
+              - column:
+                  name: news_id
+                  value: '2'
+
+        - insert:
+            tableName: comments
+            columns:
+              - column:
+                  name: text
+                  value: 'Great news.'
+
+              - column:
+                  name: time
+                  value: '2023-06-02 10:11:12'
+
+              - column:
+                  name: username
+                  value: 'debbie_garcia'
+
+              - column:
+                  name: news_id
+                  value: '3'
+
+        - insert:
+            tableName: comments
+            columns:
+              - column:
+                  name: text
+                  value: 'This has the potential to be a game changer and save thousands of lives. Early diagnosis 
+                          is key to survival rates.'
+
+              - column:
+                  name: time
+                  value: '2023-06-02 10:21:43'
+
+              - column:
+                  name: username
+                  value: 'ronnie_stevens'
+
+              - column:
+                  name: news_id
+                  value: '3'
+
+        - insert:
+            tableName: comments
+            columns:
+              - column:
+                  name: text
+                  value: 'Science working nicely. The earlier the identification of cancers the better.'
+
+              - column:
+                  name: time
+                  value: '2023-06-02 10:34:26'
+
+              - column:
+                  name: username
+                  value: 'tammy_simmons'
+
+              - column:
+                  name: news_id
+                  value: '3'
+
+        - insert:
+            tableName: comments
+            columns:
+              - column:
+                  name: text
+                  value: 'One of the true greats of the game in recent years.'
+
+              - column:
+                  name: time
+                  value: '2023-06-04 23:07:21'
+
+              - column:
+                  name: username
+                  value: 'debbie_garcia'
+
+              - column:
+                  name: news_id
+                  value: '4'
+
+        - insert:
+            tableName: comments
+            columns:
+              - column:
+                  name: text
+                  value: 'Great player on his day but surely can not be denied he was a great striker of his era.'
+
+              - column:
+                  name: time
+                  value: '2023-06-04 22:43:45'
+
+              - column:
+                  name: username
+                  value: 'ronnie_stevens'
+
+              - column:
+                  name: news_id
+                  value: '4'
+
+        - insert:
+            tableName: comments
+            columns:
+              - column:
+                  name: text
+                  value: 'Unfortunately this will just lead to higher costs to the consumer. The record labels are 
+                          not doing to take a pay cut.'
+
+              - column:
+                  name: time
+                  value: '2023-05-31 10:55:07'
+
+              - column:
+                  name: username
+                  value: 'tammy_simmons'
+
+              - column:
+                  name: news_id
+                  value: '5'
+
+        - insert:
+            tableName: comments
+            columns:
+              - column:
+                  name: text
+                  value: 'It was bad enough when all human creativity became commodified as simply content. 
+                          Now it is merely data.'
+
+              - column:
+                  name: time
+                  value: '2023-05-31 14:31:09'
+
+              - column:
+                  name: username
+                  value: 'tammy_simmons'
+
+              - column:
+                  name: news_id
+                  value: '5'

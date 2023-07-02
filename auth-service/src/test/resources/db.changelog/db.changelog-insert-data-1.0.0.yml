@@ -1,0 +1,110 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-data-1.0.0
+      author: Ruslan Kantsevitch
+
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: 'erik_gibson'
+
+              - column:
+                  name: password
+                  value: '$2y$10$7d4u75rP/8X/JuXMB2oGkuAn6uV30IGMj8jwV5HSDdGfo09g5w9Qu'
+
+              - column:
+                  name: role
+                  value: 'ADMIN'
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: 'thomas_martinez'
+
+              - column:
+                  name: password
+                  value: '$2y$10$8Hcmi/w7h3LCfnYv4qH15eIX1rLeLuG1Df1VpW4ipKD9TXseP8DkG'
+
+              - column:
+                  name: role
+                  value: 'JOURNALIST'
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: 'sharon_hill'
+
+              - column:
+                  name: password
+                  value: '$2y$10$PQhiFfDYrOfrKAUdMYH8fO3vysIeAGYt0UI/BRZEQwfy8rPgoqFVy'
+
+              - column:
+                  name: role
+                  value: 'JOURNALIST'
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: 'laura_norton'
+
+              - column:
+                  name: password
+                  value: '$2y$10$YAlehPRZTRfAD22bwA/9I.qC7vU0XCyL03yiXFmgUWwDXTf3KAtHi'
+
+              - column:
+                  name: role
+                  value: 'JOURNALIST'
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: 'debbie_garcia'
+
+              - column:
+                  name: password
+                  value: '$2y$10$vCUj0NnG5pu.q98fI6YWr.rk0F8vyqlh0l2pHBy509aBCf4GnnNT2'
+
+              - column:
+                  name: role
+                  value: 'SUBSCRIBER'
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: 'ronnie_stevens'
+
+              - column:
+                  name: password
+                  value: '$2y$10$EUQXoMhUSkuX0H763ISVwuDWjLsptBzhrBKck8bnNvd3mzQ0JzAri'
+
+              - column:
+                  name: role
+                  value: 'SUBSCRIBER'
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: 'tammy_simmons'
+
+              - column:
+                  name: password
+                  value: '$2y$10$FzrODJRLPgx5plB2R9c41OEX2b4mHofkVPuAMpc5FnqJXWxZQsuqu'
+
+              - column:
+                  name: role
+                  value: 'SUBSCRIBER'

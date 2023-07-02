@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    config:
+      enabled: false
+
+  datasource:
+    username: test
+    password: test
+
+  liquibase:
+    enabled: true
+    change-log: db/changelog/db.changelog-master.yml

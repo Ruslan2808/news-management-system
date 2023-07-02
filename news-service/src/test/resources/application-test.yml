@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    config:
+      enabled: false
+    openfeign:
+      client:
+        config:
+          auth-service:
+            url: http://localhost:8081
+
+  datasource:
+    username: test
+    password: test
+
+  liquibase:
+    enabled: true
+    change-log: db/changelog/db.changelog-master.yml

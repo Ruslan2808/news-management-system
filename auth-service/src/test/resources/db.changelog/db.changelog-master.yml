@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/db.changelog-create-tables-1.0.0.yml
+  - include:
+      file: db/changelog/db.changelog-insert-data-1.0.0.yml

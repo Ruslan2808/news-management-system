@@ -16,6 +16,8 @@
 - AssertJ
 - Mockito
 - TestContainers
+- Wiremock
+- Docker
 
 ## get started
 

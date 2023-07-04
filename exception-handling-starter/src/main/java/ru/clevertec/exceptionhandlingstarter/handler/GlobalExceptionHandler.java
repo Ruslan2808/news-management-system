@@ -38,8 +38,7 @@ public class GlobalExceptionHandler {
      * @return object of type {@link ResponseEntity<ErrorResponse>} containing information about the error
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorResponse> handleMethodArgumentNotValid(HttpServletRequest request,
-                                                                      MethodArgumentNotValidException exception) {
+    public ResponseEntity<ErrorResponse> handleMethodArgumentNotValid(HttpServletRequest request, MethodArgumentNotValidException exception) {
         ErrorResponse errorResponse = ErrorResponseUtil.buildValidationErrorResponse(request, exception, BAD_REQUEST);
         return ResponseEntity.status(BAD_REQUEST).body(errorResponse);
     }
@@ -54,8 +53,7 @@ public class GlobalExceptionHandler {
      * @return object of type {@link ResponseEntity<ErrorResponse>} containing information about the error
      */
     @ExceptionHandler({InvalidJwtException.class, JwtNotFoundException.class})
-    public ResponseEntity<ErrorResponse> handleUnauthorized(HttpServletRequest request,
-                                                            Exception exception) {
+    public ResponseEntity<ErrorResponse> handleUnauthorized(HttpServletRequest request, Exception exception) {
         ErrorResponse errorResponse = ErrorResponseUtil.buildCommonErrorResponse(request, exception, UNAUTHORIZED);
         return ResponseEntity.status(UNAUTHORIZED).body(errorResponse);
     }
@@ -70,8 +68,7 @@ public class GlobalExceptionHandler {
      * @return object of type {@link ResponseEntity<ErrorResponse>} containing information about the error
      */
     @ExceptionHandler({NewsNotFoundException.class, CommentNotFoundException.class})
-    public ResponseEntity<ErrorResponse> handleEntityNotFound(HttpServletRequest request,
-                                                              Exception exception) {
+    public ResponseEntity<ErrorResponse> handleEntityNotFound(HttpServletRequest request, Exception exception) {
         ErrorResponse errorResponse = ErrorResponseUtil.buildCommonErrorResponse(request, exception, NOT_FOUND);
         return ResponseEntity.status(NOT_FOUND).body(errorResponse);
     }
@@ -86,8 +83,7 @@ public class GlobalExceptionHandler {
      * @return object of type {@link ResponseEntity<ErrorResponse>} containing information about the error
      */
     @ExceptionHandler(UserAlreadyExistsException.class)
-    public ResponseEntity<ErrorResponse> handleUserAlreadyExists(HttpServletRequest request,
-                                                                 UserAlreadyExistsException exception) {
+    public ResponseEntity<ErrorResponse> handleUserAlreadyExists(HttpServletRequest request, UserAlreadyExistsException exception) {
         ErrorResponse errorResponse = ErrorResponseUtil.buildCommonErrorResponse(request, exception, CONFLICT);
         return ResponseEntity.status(CONFLICT).body(errorResponse);
     }

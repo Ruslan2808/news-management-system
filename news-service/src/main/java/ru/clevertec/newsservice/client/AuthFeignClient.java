@@ -23,4 +23,5 @@ public interface AuthFeignClient {
      * */
     @GetMapping("api/v1/auth/validate")
     UserResponse validate(@RequestHeader("Authorization") String authorizationHeader);
+
 }

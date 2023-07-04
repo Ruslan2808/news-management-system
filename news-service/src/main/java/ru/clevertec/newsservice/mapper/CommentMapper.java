@@ -70,4 +70,5 @@ public interface CommentMapper {
      * @param comment            target object of type {@link Comment} whose text field need to be updated
      */
     void mapUpdateFieldsToComment(NewsCommentRequest newsCommentRequest, @MappingTarget Comment comment);
+
 }

@@ -18,6 +18,7 @@ import java.util.List;
  * @author Ruslan Katnsevich
  * */
 public interface NewsService {
+
     List<NewsResponse> findAll(NewsFilter newsFilter, Pageable pageable);
     List<NewsResponse> findAllByCommentsText(String commentText, Pageable pageable);
     List<NewsResponse> findAllByCommentsUsername(String commentUsername, Pageable pageable);
@@ -26,4 +27,5 @@ public interface NewsService {
     CommentNewsResponse update(Long id, NewsRequest newsRequest);
     CommentNewsResponse updateText(Long id, NewsTextRequest newsTextRequest);
     void deleteById(Long id);
+
 }

@@ -33,4 +33,5 @@ public interface NewsRepository extends JpaRepository<News, Long> {
      * @return list objects of type {@link News}
      */
     List<News> findAllByCommentsUsernameContainingIgnoreCase(String commentUsername, Pageable pageable);
+
 }

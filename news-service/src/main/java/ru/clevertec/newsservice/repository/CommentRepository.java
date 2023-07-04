@@ -33,4 +33,5 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
      * @return object of type {@link Optional<Comment>}
      */
     Optional<Comment> findByIdAndNewsId(Long commentId, Long newsId);
+
 }

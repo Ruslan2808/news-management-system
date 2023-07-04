@@ -79,4 +79,5 @@ public interface NewsMapper {
      * @param news target object of type {@link News} whose text field need to be updated
      * */
     void mapUpdateTextFieldToNews(NewsTextRequest newsTextRequest, @MappingTarget News news);
+
 }

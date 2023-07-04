@@ -16,25 +16,19 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.clevertec.exceptionhandlingstarter.exception.CommentNotFoundException;
 import ru.clevertec.exceptionhandlingstarter.exception.NewsNotFoundException;
 import ru.clevertec.newsservice.dto.filter.CommentFilter;
-import ru.clevertec.newsservice.dto.filter.NewsFilter;
 import ru.clevertec.newsservice.dto.request.comment.CommentRequest;
 import ru.clevertec.newsservice.dto.request.comment.NewsCommentRequest;
-import ru.clevertec.newsservice.dto.request.news.NewsRequest;
 import ru.clevertec.newsservice.dto.response.comment.CommentResponse;
 import ru.clevertec.newsservice.dto.response.comment.NewsCommentResponse;
-import ru.clevertec.newsservice.dto.response.news.CommentNewsResponse;
-import ru.clevertec.newsservice.dto.response.news.NewsResponse;
 import ru.clevertec.newsservice.entity.Comment;
 import ru.clevertec.newsservice.entity.News;
 import ru.clevertec.newsservice.mapper.CommentMapper;
 import ru.clevertec.newsservice.repository.CommentRepository;
 import ru.clevertec.newsservice.repository.NewsRepository;
 import ru.clevertec.newsservice.service.CommentService;
-import ru.clevertec.newsservice.service.NewsService;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
 
@@ -111,11 +105,13 @@ public class CommentServiceImpl implements CommentService {
     }
 
     /**
-     * Finds news comment object of type {@link Comment}
+     * Finds news comment object of type {@link Comment} or throws a {@link CommentNotFoundException}
+     * if the news comment with the given id is not found in the database
      *
      * @param commentId comment id
      * @param newsId    news id
      * @return object of type {@link NewsCommentResponse}
+     * @throws CommentNotFoundException if the news comment with the given id is not found in the database
      */
     @Override
     @Cacheable(key = "#commentId", value = "comment")
@@ -183,7 +179,7 @@ public class CommentServiceImpl implements CommentService {
      * if the user tries to delete not his comment
      *
      * @param id the id of the comment to be deleted
-     * @throws NewsNotFoundException if the comment with the given id is not found in the database
+     * @throws CommentNotFoundException if the comment with the given id is not found in the database
      * @throws AccessDeniedException iif the user tries to delete not his comment
      */
     @Override

@@ -23,6 +23,11 @@ import ru.clevertec.authservice.security.jwt.filter.JwtFilter;
 
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
+/**
+ * Class for application security configuration
+ *
+ * @author Ruslan Kantsevich
+ * */
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor

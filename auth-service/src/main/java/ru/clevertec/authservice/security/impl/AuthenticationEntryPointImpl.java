@@ -20,6 +20,11 @@ import static jakarta.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
 
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 
+/**
+ * Class for handling an exception of type {@link AuthenticationException}
+ *
+ * @author Ruslan Kantsevich
+ * */
 @Component
 @RequiredArgsConstructor
 public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint {

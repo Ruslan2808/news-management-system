@@ -29,6 +29,11 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 import static ru.clevertec.authservice.security.jwt.util.JwtUtil.BEARER_PREFIX;
 
+/**
+ * Filter class for JSON Web Token validation and user authentication
+ *
+ * @author Ruslan Kantsevich
+ * */
 @Component
 @RequiredArgsConstructor
 public class JwtFilter extends OncePerRequestFilter {

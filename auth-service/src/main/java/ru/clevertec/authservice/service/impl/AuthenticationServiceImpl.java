@@ -24,6 +24,12 @@ import ru.clevertec.exceptionhandlingstarter.exception.UserAlreadyExistsExceptio
 
 import java.util.List;
 
+/**
+ * Class implementing {@link AuthenticationService} that provides methods for authorization,
+ * registration and JSON Web Token verification
+ *
+ * @author Ruslan Katnsevich
+ * */
 @Service
 @RequiredArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
@@ -34,6 +40,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final JwtProviderImpl jwtTokenProvider;
     private final AuthenticationManager authenticationManager;
 
+    /**
+     * Authorizes the user in the application and returns an access JSON Web Token to him
+     *
+     * @param logInRequest object of type {@link LogInRequest} containing information about the user to login
+     * @return object of type {@link JwtResponse} containing access JSON Web Token
+     * */
     @Override
     public JwtResponse logIn(LogInRequest logInRequest) {
         Authentication authentication = authenticate(logInRequest.getUsername(), logInRequest.getPassword());
@@ -44,6 +56,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .build();
     }
 
+    /**
+     * Registers the user in the application and returns an access JSON Web Token to him
+     *
+     * @param signUpRequest object of type {@link LogInRequest} containing information about the user to signup
+     * @return object of type {@link JwtResponse} containing access JSON Web Token
+     * */
     @Override
     public JwtResponse signUp(SignUpRequest signUpRequest) {
         userRepository.findByUsername(signUpRequest.getUsername())
@@ -62,6 +80,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .build();
     }
 
+    /**
+     * Validates the JSON Web Token. If the token is valid then it returns information about
+     * the user authorized (username and authorities) in the application
+     *
+     * @param authorizationHeader authorization header of HTTP request
+     * @return object of type {@link UserResponse} containing information about username and authorities of user
+     * */
     @Override
     public UserResponse validateToken(String authorizationHeader) {
         String jwtToken = JwtUtil.extractJwt(authorizationHeader);
@@ -79,6 +104,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .build();
     }
 
+    /**
+     * Authenticates user in the application
+     *
+     * @param username username for authentication
+     * @param password password for authentication
+     * @return object of type {@link Authentication} containing information about the authenticated user
+     * */
     private Authentication authenticate(String username, String password) {
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(username, password);

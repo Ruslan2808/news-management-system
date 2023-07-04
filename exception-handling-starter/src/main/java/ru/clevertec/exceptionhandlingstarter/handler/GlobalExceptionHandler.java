@@ -91,20 +91,4 @@ public class GlobalExceptionHandler {
         ErrorResponse errorResponse = ErrorResponseUtil.buildCommonErrorResponse(request, exception, CONFLICT);
         return ResponseEntity.status(CONFLICT).body(errorResponse);
     }
-
-    /**
-     * Handles an exception to type {@link UserAlreadyExistsException} and returns the response with HTTP status
-     * 409 (CONFLICT)
-     *
-     * @param request   - object of type {@link AuthClientException} containing information about the HTTP request
-     * @param exception - object of type {@link AuthClientException} containing information about
-     *                  an exception that occurred when working with the auth feign client
-     * @return object of type {@link ResponseEntity<ErrorResponse>} containing information about the error
-     */
-    @ExceptionHandler(AuthClientException.class)
-    public ResponseEntity<ErrorResponse> handleAuthClient(HttpServletRequest request,
-                                                          AuthClientException exception) {
-        ErrorResponse errorResponse = ErrorResponseUtil.buildCommonErrorResponse(request, exception, exception.getStatus());
-        return ResponseEntity.status(exception.getStatus()).body(errorResponse);
-    }
 }

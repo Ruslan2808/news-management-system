@@ -32,6 +32,11 @@ import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatc
 import static ru.clevertec.newsservice.security.util.SecurityUtil.isAccessRole;
 import static ru.clevertec.newsservice.security.util.SecurityUtil.isAccessUsername;
 
+/**
+ * An implementation of the {@link NewsService} interface for performing operations with {@link News}
+ *
+ * @author Ruslan Kantsevich
+ */
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -41,6 +46,15 @@ public class NewsServiceImpl implements NewsService {
     private final NewsMapper newsMapper;
     private final NewsRepository newsRepository;
 
+    /**
+     * Finds all objects of type {@link News} with the possibility of filtering and pagination
+     *
+     * @param newsFilter object of type {@link NewsFilter} containing information about
+     *                   title, text and username of news for filtering
+     * @param pageable   object of type {@link Pageable} containing pagination and sorting parameters
+     *                   (page, size and sort)
+     * @return list objects of type {@link NewsResponse}
+     */
     @Override
     public List<NewsResponse> findAll(NewsFilter newsFilter, Pageable pageable) {
         ExampleMatcher newsMatcher = ExampleMatcher.matching()
@@ -56,18 +70,42 @@ public class NewsServiceImpl implements NewsService {
         return newsMapper.mapToNewsResponses(news);
     }
 
+    /**
+     * Finds all objects of type {@link News} by comment text with the possibility of filtering and pagination
+     *
+     * @param commentText news comment text
+     * @param pageable    object of type {@link Pageable} containing pagination and sorting parameters
+     *                    (page, size and sort)
+     * @return list objects of type {@link NewsResponse}
+     */
     @Override
     public List<NewsResponse> findAllByCommentsText(String commentText, Pageable pageable) {
         List<News> news = newsRepository.findAllByCommentsTextContainingIgnoreCase(commentText, pageable);
         return newsMapper.mapToNewsResponses(news);
     }
 
+    /**
+     * Finds all objects of type {@link News} by comment username with the possibility of pagination
+     *
+     * @param commentUsername news comment username
+     * @param pageable        object of type {@link Pageable} containing pagination and sorting parameters
+     *                        (page, size and sort)
+     * @return list objects of type {@link NewsResponse}
+     */
     @Override
     public List<NewsResponse> findAllByCommentsUsername(String commentUsername, Pageable pageable) {
         List<News> news = newsRepository.findAllByCommentsUsernameContainingIgnoreCase(commentUsername, pageable);
         return newsMapper.mapToNewsResponses(news);
     }
 
+    /**
+     * Finds news by id or throws a {@link NewsNotFoundException}
+     * if the news with the given id is not found in the database
+     *
+     * @param id the news id
+     * @return object of type {@link CommentNewsResponse} with given id
+     * @throws NewsNotFoundException if the news with the given id is not found in the database
+     */
     @Override
     @Cacheable(key = "#id", value = "news")
     public CommentNewsResponse findById(Long id) {
@@ -77,6 +115,13 @@ public class NewsServiceImpl implements NewsService {
         return newsMapper.mapToCommentNewsResponse(news);
     }
 
+    /**
+     * Saves the news in the database
+     *
+     * @param newsRequest object of type {@link NewsRequest} to save
+     * @param principal   object of type {@link Principal} containing information about authenticated username
+     * @return the saved news of type {@link CommentNewsResponse}
+     */
     @Override
     @Transactional
     @CachePut(key = "#result.id", value = "news")
@@ -88,6 +133,17 @@ public class NewsServiceImpl implements NewsService {
         return newsMapper.mapToCommentNewsResponse(savedNews);
     }
 
+    /**
+     * Updates the news with the given id in the database or throws a {@link NewsNotFoundException}
+     * if the news with the given id is not found or throws a {@link AccessDeniedException}
+     * if the user tries to update not his news
+     *
+     * @param id          the id of the updated news
+     * @param newsRequest the news of type {@link NewsRequest} with data to update an existing news
+     * @return the updated news of type {@link CommentNewsResponse}
+     * @throws NewsNotFoundException if the news with the given id is not found in the database
+     * @throws AccessDeniedException iif the user tries to update not his news
+     */
     @Override
     @Transactional
     @CachePut(key = "#id", value = "news")
@@ -105,6 +161,17 @@ public class NewsServiceImpl implements NewsService {
         return newsMapper.mapToCommentNewsResponse(updatedNews);
     }
 
+    /**
+     * Updates the news text with the given id in the database or throws a {@link NewsNotFoundException}
+     * if the news with the given id is not found or throws a {@link AccessDeniedException}
+     * if the user tries to update not his news
+     *
+     * @param id              the id of the updated news
+     * @param newsTextRequest the news of type {@link NewsTextRequest} with text field to update an existing news
+     * @return the updated news of type {@link CommentNewsResponse}
+     * @throws NewsNotFoundException if the news with the given id is not found in the database
+     * @throws AccessDeniedException iif the user tries to update not his news
+     */
     @Override
     @Transactional
     @CachePut(key = "#id", value = "news")
@@ -122,6 +189,15 @@ public class NewsServiceImpl implements NewsService {
         return newsMapper.mapToCommentNewsResponse(updatedNews);
     }
 
+    /**
+     * Deletes the news with the given id from the database or throws a {@link NewsNotFoundException}
+     * if the news with the given id is not found or throws a {@link AccessDeniedException}
+     * if the user tries to delete not his news
+     *
+     * @param id the id of the news to be deleted
+     * @throws NewsNotFoundException if the news with the given id is not found in the database
+     * @throws AccessDeniedException iif the user tries to delete not his news
+     */
     @Override
     @Transactional
     @CacheEvict(key = "#id", value = "news")

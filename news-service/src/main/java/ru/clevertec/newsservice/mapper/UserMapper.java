@@ -13,10 +13,23 @@ import ru.clevertec.newsservice.dto.response.user.UserResponse;
 
 import java.util.Collection;
 
+/**
+ * Class that provides methods for mapping object storing user data
+ *
+ * @author Ruslan Kantsevich
+ * */
 @Component
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface UserMapper {
 
+    /**
+     * Mappings object of type {@link UserResponse} storing user data for authentication to
+     * object of type {@link UserDetails}
+     *
+     * @param userResponse object of type {@link UserResponse} containing information about
+     *                     username and authorities of user
+     * @return object of type {@link UserDetails} containing core user information
+     * */
     default UserDetails mapToUserDetails(UserResponse userResponse) {
         Collection<? extends GrantedAuthority> grantedAuthorities =
                 Mappers.getMapper(AuthorityMapper.class).mapToGrantedAuthorities(userResponse.getAuthorities());

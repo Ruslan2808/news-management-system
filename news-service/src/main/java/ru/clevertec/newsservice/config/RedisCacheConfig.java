@@ -9,6 +9,11 @@ import org.springframework.context.annotation.Configuration;
 
 import static org.springframework.data.redis.cache.RedisCacheConfiguration.defaultCacheConfig;
 
+/**
+ * Class for application redis cache configuration
+ *
+ * @author Ruslan Kantsevich
+ * */
 @Configuration
 @EnableCaching
 @ConditionalOnProperty(

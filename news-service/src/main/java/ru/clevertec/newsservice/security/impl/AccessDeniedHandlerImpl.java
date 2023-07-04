@@ -20,6 +20,11 @@ import static jakarta.servlet.http.HttpServletResponse.SC_FORBIDDEN;
 
 import static org.springframework.http.HttpStatus.FORBIDDEN;
 
+/**
+ * Class for handling an exception of type {@link AccessDeniedException}
+ *
+ * @author Ruslan Kantsevich
+ * */
 @Component
 @RequiredArgsConstructor
 public class AccessDeniedHandlerImpl implements AccessDeniedHandler {

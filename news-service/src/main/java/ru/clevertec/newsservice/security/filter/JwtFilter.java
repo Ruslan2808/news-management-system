@@ -23,6 +23,11 @@ import java.io.IOException;
 
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
+/**
+ * Filter class for JSON Web Token validation and user authentication
+ *
+ * @author Ruslan Kantsevich
+ * */
 @Component
 @RequiredArgsConstructor
 public class JwtFilter extends OncePerRequestFilter {

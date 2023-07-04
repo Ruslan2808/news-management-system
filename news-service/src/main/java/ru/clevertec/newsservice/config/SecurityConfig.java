@@ -20,6 +20,11 @@ import ru.clevertec.newsservice.security.impl.AuthenticationEntryPointImpl;
 
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
+/**
+ * Class for application security configuration
+ *
+ * @author Ruslan Kantsevich
+ * */
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
